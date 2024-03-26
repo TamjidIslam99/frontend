@@ -1,24 +1,24 @@
 import logo from './logo.svg';
+import { BrowserRouter as Router, Route,  Routes } from 'react-router-dom';
 import './App.css';
+import CourseDetail from './component/CourseDetail';
+import Finalbill from './component/Finalbill';
+import LoginForm from './component/LoginForm';
+import RegisterForm from './component/RegisterForm';
+import BillingSystemHome from './component/Home';
+import Home from './component/Home'
+import AuthenticatedRoute from './component/AuthenticatedRoute';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+<Router>
+            <Routes>
+                <Route path='/' element={<LoginForm/>}/>
+                <Route path="/home" element={<AuthenticatedRoute />} />
+                
+            </Routes>
+</Router>
   );
 }
 
