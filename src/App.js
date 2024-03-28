@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import { BrowserRouter as Router, Route,  Routes } from 'react-router-dom';
-import './App.css';
-import CourseDetail from './component/CourseDetail';
-import Finalbill from './component/Finalbill';
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoginForm from './component/LoginForm';
-import RegisterForm from './component/RegisterForm';
-import BillingSystemHome from './component/Home';
-import Home from './component/Home'
-import AuthenticatedRoute from './component/AuthenticatedRoute';
 
+import AuthenticatedRoute from './component/AuthenticatedRoute';// Import the AuthenticatedRoute component
+import Home from './component/Home';
 
 function App() {
   return (
-<Router>
-            <Routes>
-                <Route path='/' element={<LoginForm/>}/>
-                <Route path="/home" element={<AuthenticatedRoute />} />
-                
-            </Routes>
-</Router>
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginForm />} />
+        <Route path="/home" element={<Home />} /> {/* Define your home page route */}
+      </Routes>
+    </Router>
   );
 }
 

@@ -1,13 +1,17 @@
-// AuthenticatedRoute.js
-
 import React from 'react';
 import { Route, Navigate } from 'react-router-dom';
 
-const AuthenticatedRoute = ({ element }) => {
-  // Check if the user is authenticated (you can implement your own logic here)
-  const isAuthenticated = !!localStorage.getItem('token');
+const isAuthenticated = () => {
+  const token = localStorage.getItem('token');
+  return token !== null;
+};
 
-  return isAuthenticated ? <Route element={element} /> : <Navigate to="/" />;
+const AuthenticatedRoute = ({ element: Component, ...rest }) => {
+  return isAuthenticated() ? (
+    <Route {...rest} element={<Component />} />
+  ) : (
+    <Navigate to="/" replace />
+  );
 };
 
 export default AuthenticatedRoute;

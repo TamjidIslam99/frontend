@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom'; 
 function LoginForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     fetch('http://127.0.0.1:8000/api/login/', {
@@ -15,15 +15,21 @@ function LoginForm() {
     })
     .then(response => {
       if (response.ok) {
+       
         return response.json();
+        
       }
+      alert("Log in failed");
       throw new Error('Login failed');
+      
     })
     .then(data => {
-      console.log('Login successful');
+      
+      navigate('/home');
       // Save token to localStorage or handle it accordingly
     })
     .catch(error => console.error('Error logging in:', error));
+    
   };
 
   return (
